@@ -4,7 +4,7 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {addRestaurant} from '../../actions/action-creator';
 
-export default class AddRestaurant extends React.Component {
+class AddRestaurant extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
