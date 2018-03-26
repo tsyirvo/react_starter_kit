@@ -1,12 +1,31 @@
 {
-  "presets": [
-    "es2015",
-    "react"
-  ],
+  "presets": ["react-app"],
+  "env": {
+    "production": {
+      "plugins": ["transform-remove-console"]
+    }
+  },
   "plugins": [
+    "transform-inline-environment-variables",
     "transform-decorators-legacy",
-    "transform-es2015-block-scoping",
-    "transform-es2015-parameters",
-    "transform-object-rest-spread"
+    [
+      "module-resolver",
+      {
+        "root": ["./src"],
+        "alias": {
+          "store": "./src/redux/store",
+          "actions": "./src/redux/actions",
+          "actionTypes": "./src/redux/actionTypes",
+          "reducers": "./src/redux/reducers",
+          "selectors": "./src/redux/selectors",
+          "routes": "./src/routes",
+          "utils": "./src/utils",
+          "shared": "./src/components/shared",
+          "styles": "./src/styles",
+          "styledComponents": "./src/styles/styledComponents",
+          "pages": "./src/pages"
+        }
+      }
+    ]
   ]
 }
