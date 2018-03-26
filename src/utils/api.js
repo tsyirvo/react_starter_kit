@@ -1,10 +1,9 @@
 import { Observable } from 'rxjs';
 
-// const { API } = process.env;
-const API = 'http://jsonplaceholder.typicode.com';
+const { API } = process.env;
 const defaultHeaders = {
   Accept: 'application/json',
-  'Content-Type': 'application/json'
+  'Content-Type': 'application/json',
 };
 
 const checkStatus = res => {
@@ -38,7 +37,7 @@ export const postEpic = (url, body) => {
   const request = fetch(`${API}${url}`, {
     ...defaultHeaders,
     method: 'POST',
-    body: JSON.stringify(body)
+    body: JSON.stringify(body),
   })
     .then(res => checkStatus(res))
     .then(data => parseJSON(data));
@@ -52,7 +51,7 @@ export const putEpic = (url, body) => {
   const request = fetch(`${API}${url}`, {
     ...defaultHeaders,
     method: 'PUT',
-    body: JSON.stringify(body)
+    body: JSON.stringify(body),
   })
     .then(res => checkStatus(res))
     .then(data => parseJSON(data));
@@ -65,7 +64,7 @@ export const putEpic = (url, body) => {
 export const delEpic = url => {
   const request = fetch(`${API}${url}`, {
     ...defaultHeaders,
-    method: 'DELETE'
+    method: 'DELETE',
   })
     .then(res => checkStatus(res))
     .then(checkedRes => parseJSON(checkedRes));
