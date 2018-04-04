@@ -8,18 +8,14 @@ import Button from '../shared/Button';
 const Controls = ({ filterBy }) => {
   return (
     <StyledContainerRow>
-      <Button action={() => filterBy('all')} label="Show all" to="/posts" />
-      <Button
-        action={() => filterBy('user')}
-        label="Filter posts for user 1"
-        to="/posts"
-      />
+      <Button action={() => filterBy('all')} label="Show all" />
+      <Button action={() => filterBy('user')} label="Filter posts for user 1" />
     </StyledContainerRow>
   );
 };
 
 Controls.propTypes = {
-  filterBy: func.isRequired
+  filterBy: func.isRequired,
 };
 
 export default Controls;
