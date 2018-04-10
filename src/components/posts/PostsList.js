@@ -16,7 +16,7 @@ const StyledSeparator = styled.div`
 
 class PostsList extends PureComponent {
   state = {
-    datas: []
+    datas: [],
   };
 
   componentDidMount() {
@@ -28,7 +28,7 @@ class PostsList extends PureComponent {
       this.setState(state => {
         return {
           ...state,
-          datas: nextProps.posts
+          datas: nextProps.posts,
         };
       });
     }
@@ -40,17 +40,18 @@ class PostsList extends PureComponent {
       this.setState(state => {
         return {
           ...state,
-          datas: this.props.posts
+          datas: this.props.posts,
         };
       });
     } else {
       this.setState(state => {
         return {
           ...state,
-          datas: this.props.postsByUserId
+          datas: this.props.postsByUserId,
         };
       });
     }
+    return false;
   }
 
   render() {
@@ -86,7 +87,7 @@ PostsList.propTypes = {
       userId: number.isRequired,
       id: number.isRequired,
       title: string.isRequired,
-      body: string.isRequired
+      body: string.isRequired,
     })
   ).isRequired,
   postsByUserId: arrayOf(
@@ -94,9 +95,9 @@ PostsList.propTypes = {
       userId: number.isRequired,
       id: number.isRequired,
       title: string.isRequired,
-      body: string.isRequired
+      body: string.isRequired,
     })
-  ).isRequired
+  ).isRequired,
 };
 
 export default PostsList;

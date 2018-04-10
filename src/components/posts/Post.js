@@ -3,11 +3,11 @@ import { string, func } from 'prop-types';
 
 import {
   StyledContainerColumn,
-  StyledContainerRow
+  StyledContainerRow,
 } from '../../styles/styledComponents/containers';
 import {
   StyledTextBold,
-  StyledText
+  StyledText,
 } from '../../styles/styledComponents/texts';
 
 import Button from '../shared/Button';
@@ -21,8 +21,8 @@ const Post = ({ title, body, onEdit, onDelete }) => {
       </div>
 
       <StyledContainerRow>
-        <Button action={() => onEdit()} label="Edit" to="/posts" />
-        <Button action={() => onDelete()} label="Delete" to="/posts" />
+        <Button action={() => onEdit()} label="Edit" />
+        <Button action={() => onDelete()} label="Delete" />
       </StyledContainerRow>
     </StyledContainerColumn>
   );
@@ -32,7 +32,7 @@ Post.propTypes = {
   title: string.isRequired,
   body: string.isRequired,
   onEdit: func.isRequired,
-  onDelete: func.isRequired
+  onDelete: func.isRequired,
 };
 
 export default Post;
