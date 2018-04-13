@@ -1,5 +1,6 @@
 {
   "extends": ["airbnb", "prettier", "react-app"],
+  "plugins": ["flowtype"],
   "rules": {
     "react/jsx-filename-extension": [
       1,

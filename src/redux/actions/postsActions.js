@@ -1,19 +1,27 @@
-import * as ActionTypes from '../actionTypes/postsActionTypes';
+// @flow
+
+import type {
+  PostsImmutable,
+  FetchPostsSucceededAction,
+  FetchPostsFailedAction
+} from '../../types/flowTypes/posts';
 
 /* ***** *****  Fetch posts  ***** ***** */
 
-export const fetchPostsSucceeded = data => {
+export const fetchPostsSucceeded = (
+  data: Array<PostsImmutable>
+): FetchPostsSucceededAction => {
   return {
-    type: ActionTypes.FETCH_POSTS_SUCCEEDED,
+    type: 'FETCH_POSTS_SUCCEEDED',
     payload: {
       data
     }
   };
 };
 
-export const fetchPostsFailed = error => {
+export const fetchPostsFailed = (error: string): FetchPostsFailedAction => {
   return {
-    type: ActionTypes.FETCH_POSTS_FAILED,
+    type: 'FETCH_POSTS_FAILED',
     payload: {
       error
     }

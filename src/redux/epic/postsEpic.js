@@ -1,13 +1,15 @@
+// @flow
 import { Observable } from 'rxjs';
 
+import type { Epic, PostsImmutable } from '../../types/flowTypes/posts';
+
 import { getEpic } from '../../utils/api';
-import * as ActionTypes from '../actionTypes/postsActionTypes';
 import { fetchPostsSucceeded, fetchPostsFailed } from '../actions/postsActions';
 
-const watchFetchData = action$ =>
-  action$.ofType(ActionTypes.FETCH_POSTS).mergeMap(() => {
+const watchFetchData: Epic = action$ =>
+  action$.ofType('FETCH_POSTS').mergeMap(() => {
     return getEpic(`/posts`)
-      .map(data => {
+      .map((data: Array<PostsImmutable>) => {
         return fetchPostsSucceeded(data);
       })
       .catch(error => Observable.of(fetchPostsFailed(error)));

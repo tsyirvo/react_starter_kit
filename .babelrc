@@ -1,5 +1,5 @@
 {
-  "presets": ["react-app"],
+  "presets": ["react-app", "flow"],
   "env": {
     "production": {
       "plugins": ["transform-remove-console"]

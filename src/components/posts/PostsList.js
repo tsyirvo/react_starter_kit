@@ -1,9 +1,14 @@
-import React, { PureComponent } from 'react';
-import { func, arrayOf, shape, string, number } from 'prop-types';
+// @flow
+
+import * as React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { bind } from 'decko';
 
 import { StyledContainerBasic } from '../../styles/styledComponents/containers';
+
+import type { PostsList as PostsListType } from '../../types/flowTypes/posts';
+import { postsList } from '../../types/propTypes/posts';
 
 import Post from './Post';
 import Controls from './Controls';
@@ -14,40 +19,49 @@ const StyledSeparator = styled.div`
   margin-vertical: 15;
 `;
 
-class PostsList extends PureComponent {
+class PostsList extends React.PureComponent<
+  {
+    getPosts: () => mixed,
+    posts: PostsListType,
+    postsByUserId: PostsListType
+  },
+  {
+    datas: PostsListType
+  }
+> {
   state = {
-    datas: [],
+    datas: []
   };
 
   componentDidMount() {
     this.props.getPosts();
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps: { posts: PostsListType }) {
     if (this.props.posts !== nextProps.posts) {
       this.setState(state => {
         return {
           ...state,
-          datas: nextProps.posts,
+          datas: nextProps.posts
         };
       });
     }
   }
 
   @bind
-  filterBy(filter) {
+  filterBy(filter: string) {
     if (filter === 'all') {
       this.setState(state => {
         return {
           ...state,
-          datas: this.props.posts,
+          datas: this.props.posts
         };
       });
     } else {
       this.setState(state => {
         return {
           ...state,
-          datas: this.props.postsByUserId,
+          datas: this.props.postsByUserId
         };
       });
     }
@@ -81,23 +95,9 @@ class PostsList extends PureComponent {
 }
 
 PostsList.propTypes = {
-  getPosts: func.isRequired,
-  posts: arrayOf(
-    shape({
-      userId: number.isRequired,
-      id: number.isRequired,
-      title: string.isRequired,
-      body: string.isRequired,
-    })
-  ).isRequired,
-  postsByUserId: arrayOf(
-    shape({
-      userId: number.isRequired,
-      id: number.isRequired,
-      title: string.isRequired,
-      body: string.isRequired,
-    })
-  ).isRequired,
+  getPosts: PropTypes.func.isRequired,
+  posts: postsList.isRequired,
+  postsByUserId: postsList.isRequired
 };
 
 export default PostsList;

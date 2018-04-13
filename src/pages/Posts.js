@@ -1,15 +1,26 @@
-import React from 'react';
+// @flow
+
+import * as React from 'react';
 import { connect } from 'react-redux';
-import { func, arrayOf, shape, number, string } from 'prop-types';
+import PropTypes from 'prop-types';
 
 import { StyledContainerRow } from '../styles/styledComponents/containers';
-
-import * as ActionTypes from '../redux/actionTypes/postsActionTypes';
 import postsSelectorByUserId from '../redux/selectors/postsSelectors';
 
 import { PostsList } from '../components/posts';
 
-const Posts = ({ posts, postsByUserId, getPosts }) => {
+import type { PostsList as PostsListType } from '../types/flowTypes/posts';
+import { postsList } from '../types/propTypes/posts';
+
+const Posts = ({
+  posts,
+  postsByUserId,
+  getPosts
+}: {
+  posts: PostsListType,
+  postsByUserId: PostsListType,
+  getPosts: () => mixed
+}) => {
   return (
     <StyledContainerRow>
       <PostsList
@@ -24,30 +35,16 @@ const Posts = ({ posts, postsByUserId, getPosts }) => {
 };
 
 Posts.propTypes = {
-  getPosts: func.isRequired,
-  posts: arrayOf(
-    shape({
-      userId: number.isRequired,
-      id: number.isRequired,
-      title: string.isRequired,
-      body: string.isRequired,
-    })
-  ).isRequired,
-  postsByUserId: arrayOf(
-    shape({
-      userId: number.isRequired,
-      id: number.isRequired,
-      title: string.isRequired,
-      body: string.isRequired,
-    })
-  ).isRequired,
+  getPosts: PropTypes.func.isRequired,
+  posts: postsList.isRequired,
+  postsByUserId: postsList.isRequired
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     getPosts: () => {
-      dispatch({ type: ActionTypes.FETCH_POSTS });
-    },
+      dispatch({ type: 'FETCH_POSTS' });
+    }
   };
 };
 
@@ -55,7 +52,7 @@ const mapStateToProps = state => {
   return {
     posts: state.posts.posts,
     postsByUserId: postsSelectorByUserId(state),
-    postsError: state.posts.error,
+    postsError: state.posts.error
   };
 };
 

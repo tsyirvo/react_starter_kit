@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react';
 import {
   StyledContainerBasic,
@@ -9,14 +11,12 @@ const StyledWrapper = StyledContainerBasic.extend`
   justify-content: center;
 `;
 
-const HomePage = () => {
-  return (
-    <StyledWrapper>
-      <StyledContainerColumn>
-        <Button to="/posts" label="Go to posts API example" />
-      </StyledContainerColumn>
-    </StyledWrapper>
-  );
-};
+const HomePage = () => (
+  <StyledWrapper>
+    <StyledContainerColumn>
+      <Button to="/posts" label="Go to posts API example" />
+    </StyledContainerColumn>
+  </StyledWrapper>
+);
 
 export default HomePage;

@@ -1,26 +1,30 @@
+// @flow
 import { Observable } from 'rxjs';
 
 const { API } = process.env;
+if (!API) {
+  throw new Error('Need api key');
+}
+
 const defaultHeaders = {
   Accept: 'application/json',
-  'Content-Type': 'application/json',
+  'Content-Type': 'application/json'
 };
+
+type ApiFunc = (url: string, body?: Object) => Observable<any>;
 
 const checkStatus = res => {
   if (res.status >= 200 && res.status < 300) {
     return res;
   }
-  const error = new Error(res.statusText);
-
-  error.res = res;
-  throw error;
+  throw new Error(res.statusText);
 };
 
 const parseJSON = res => {
   return res.json();
 };
 
-export const getEpic = url => {
+export const getEpic: ApiFunc = url => {
   console.log('api is ', API, url);
   const request = fetch(`${API}${url}`, defaultHeaders)
     .then(res => checkStatus(res))
@@ -31,13 +35,13 @@ export const getEpic = url => {
   );
 };
 
-export const postEpic = (url, body) => {
+export const postEpic: ApiFunc = (url, body) => {
   console.log('Post content', body);
 
   const request = fetch(`${API}${url}`, {
     ...defaultHeaders,
     method: 'POST',
-    body: JSON.stringify(body),
+    body: JSON.stringify(body)
   })
     .then(res => checkStatus(res))
     .then(data => parseJSON(data));
@@ -47,11 +51,11 @@ export const postEpic = (url, body) => {
   );
 };
 
-export const putEpic = (url, body) => {
+export const putEpic: ApiFunc = (url, body) => {
   const request = fetch(`${API}${url}`, {
     ...defaultHeaders,
     method: 'PUT',
-    body: JSON.stringify(body),
+    body: JSON.stringify(body)
   })
     .then(res => checkStatus(res))
     .then(data => parseJSON(data));
@@ -61,10 +65,10 @@ export const putEpic = (url, body) => {
   );
 };
 
-export const delEpic = url => {
+export const delEpic: ApiFunc = url => {
   const request = fetch(`${API}${url}`, {
     ...defaultHeaders,
-    method: 'DELETE',
+    method: 'DELETE'
   })
     .then(res => checkStatus(res))
     .then(checkedRes => parseJSON(checkedRes));
