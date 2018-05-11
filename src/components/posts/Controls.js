@@ -1,7 +1,4 @@
-// @flow
-
 import * as React from 'react';
-import PropTypes from 'prop-types';
 
 import { StyledContainerRow } from '../../styles/styledComponents/containers';
 
@@ -13,9 +10,5 @@ const Controls = ({ filterBy }: { filterBy: (param: string) => mixed }) => (
     <Button action={() => filterBy('user')} label="Filter posts for user 1" />
   </StyledContainerRow>
 );
-
-Controls.propTypes = {
-  filterBy: PropTypes.func.isRequired,
-};
 
 export default Controls;

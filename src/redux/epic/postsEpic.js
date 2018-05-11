@@ -1,6 +1,4 @@
-// @flow
 import { Observable } from 'rxjs';
-
 import type { Epic, PostsImmutable } from '../../types/flowTypes/posts';
 
 import { getEpic } from '../../utils/api';

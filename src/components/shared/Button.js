@@ -1,7 +1,4 @@
-// @flow
-
 import * as React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
@@ -45,12 +42,6 @@ const Button = ({
 Button.defaultProps = {
   action: () => {},
   to: '',
-};
-
-Button.propTypes = {
-  label: PropTypes.string.isRequired,
-  action: PropTypes.func,
-  to: PropTypes.string,
 };
 
 export default Button;

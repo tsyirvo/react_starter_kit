@@ -1,5 +1,3 @@
-// @flow
-
 import * as React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -10,7 +8,6 @@ import postsSelectorByUserId from '../redux/selectors/postsSelectors';
 import { PostsList } from '../components/posts';
 
 import type { PostsList as PostsListType } from '../types/flowTypes/posts';
-import { postsList } from '../types/propTypes/posts';
 
 const Posts = ({
   posts,
@@ -34,12 +31,6 @@ const Posts = ({
   );
 };
 
-Posts.propTypes = {
-  getPosts: PropTypes.func.isRequired,
-  posts: postsList.isRequired,
-  postsByUserId: postsList.isRequired
-};
-
 const mapDispatchToProps = dispatch => {
   return {
     getPosts: () => {
@@ -56,4 +47,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Posts);
+export default connect(mapStateToProps, mapDispatchToProps, null, {})(Posts);

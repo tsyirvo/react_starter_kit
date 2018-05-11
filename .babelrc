@@ -3,6 +3,9 @@
   "env": {
     "production": {
       "plugins": ["transform-remove-console"]
+    },
+    "development": {
+      "plugins": [["flow-react-proptypes", { "ignoreNodeModules": true }]]
     }
   },
   "plugins": [

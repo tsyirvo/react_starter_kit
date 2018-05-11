@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 'use strict';
 
 // Do this as the first thing so that any code reading it knows the right env.
@@ -22,6 +24,5 @@ const argv = process.argv.slice(2);
 if (!process.env.CI && argv.indexOf('--coverage') < 0) {
   argv.push('--watch');
 }
-
 
 jest.run(argv);

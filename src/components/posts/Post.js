@@ -1,7 +1,4 @@
-// @flow
-
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import {
   StyledContainerColumn,
@@ -37,12 +34,5 @@ const Post = ({
     </StyledContainerRow>
   </StyledContainerColumn>
 );
-
-Post.propTypes = {
-  title: PropTypes.string.isRequired,
-  body: PropTypes.string.isRequired,
-  onEdit: PropTypes.func.isRequired,
-  onDelete: PropTypes.func.isRequired
-};
 
 export default Post;

@@ -1,14 +1,10 @@
-// @flow
-
 import * as React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { bind } from 'decko';
 
 import { StyledContainerBasic } from '../../styles/styledComponents/containers';
 
 import type { PostsList as PostsListType } from '../../types/flowTypes/posts';
-import { postsList } from '../../types/propTypes/posts';
 
 import Post from './Post';
 import Controls from './Controls';
@@ -93,11 +89,5 @@ class PostsList extends React.PureComponent<
     );
   }
 }
-
-PostsList.propTypes = {
-  getPosts: PropTypes.func.isRequired,
-  posts: postsList.isRequired,
-  postsByUserId: postsList.isRequired
-};
 
 export default PostsList;

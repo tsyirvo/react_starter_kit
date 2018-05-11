@@ -1,4 +1,5 @@
 [ignore]
+.*/registerServiceWorker\.js
 
 [include]
 
@@ -8,5 +9,6 @@
 
 [options]
 esproposal.decorators=ignore
+all=true
 
 [strict]

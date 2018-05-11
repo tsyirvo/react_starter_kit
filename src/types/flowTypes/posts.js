@@ -1,6 +1,9 @@
-// @flow
-import type { Observable } from 'rxjs';
-import * as ActionTypes from '../../redux/actionTypes/postsActionTypes';
+import type { ActionsObservable } from 'redux-observable';
+import type {
+  FETCH_POSTS_SUCCEEDED,
+  FETCH_POSTS_FAILED,
+  FETCH_POSTS
+} from '../../redux/actionTypes/postsActionTypes';
 
 export type Posts = {
   userId: number,
@@ -19,21 +22,21 @@ export type PostsImmutable = {
 };
 
 export type FetchPostsSucceededAction = {
-  +type: ActionTypes.FETCH_POSTS_SUCCEEDED,
+  +type: FETCH_POSTS_SUCCEEDED,
   +payload: {
     +data: Array<PostsImmutable>
   }
 };
 
 export type FetchPostsFailedAction = {
-  +type: ActionTypes.FETCH_POSTS_FAILED,
+  +type: FETCH_POSTS_FAILED,
   +payload: {
     +error: string
   }
 };
 
 export type FectchPostsAction = {
-  +type: ActionTypes.FETCH_POSTS
+  +type: FETCH_POSTS
 };
 
 export type State = {
@@ -47,6 +50,6 @@ export type Action =
   | FectchPostsAction;
 
 export type Epic = (
-  actions$: Observable<Action>,
+  actions$: ActionsObservable<Action>,
   { getState: () => State }
-) => Observable<Action>;
+) => ActionsObservable<Action>;
