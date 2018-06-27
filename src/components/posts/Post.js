@@ -1,38 +1,38 @@
 import React from 'react';
-import { string, func } from 'prop-types';
 
 import {
   StyledContainerColumn,
-  StyledContainerRow,
+  StyledContainerRow
 } from '../../styles/styledComponents/containers';
 import {
   StyledTextBold,
-  StyledText,
+  StyledText
 } from '../../styles/styledComponents/texts';
 
 import Button from '../shared/Button';
 
-const Post = ({ title, body, onEdit, onDelete }) => {
-  return (
-    <StyledContainerColumn>
-      <div>
-        <StyledTextBold>{title}</StyledTextBold>
-        <StyledText>{body}</StyledText>
-      </div>
+const Post = ({
+  title,
+  body,
+  onEdit,
+  onDelete
+}: {
+  title: string,
+  body: string,
+  onEdit: () => mixed,
+  onDelete: () => mixed
+}) => (
+  <StyledContainerColumn>
+    <div>
+      <StyledTextBold>{title}</StyledTextBold>
+      <StyledText>{body}</StyledText>
+    </div>
 
-      <StyledContainerRow>
-        <Button action={() => onEdit()} label="Edit" />
-        <Button action={() => onDelete()} label="Delete" />
-      </StyledContainerRow>
-    </StyledContainerColumn>
-  );
-};
-
-Post.propTypes = {
-  title: string.isRequired,
-  body: string.isRequired,
-  onEdit: func.isRequired,
-  onDelete: func.isRequired,
-};
+    <StyledContainerRow>
+      <Button action={() => onEdit()} label="Edit" />
+      <Button action={() => onDelete()} label="Delete" />
+    </StyledContainerRow>
+  </StyledContainerColumn>
+);
 
 export default Post;

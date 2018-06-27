@@ -1,0 +1,14 @@
+[ignore]
+.*/registerServiceWorker\.js
+
+[include]
+
+[libs]
+
+[lints]
+
+[options]
+esproposal.decorators=ignore
+all=true
+
+[strict]

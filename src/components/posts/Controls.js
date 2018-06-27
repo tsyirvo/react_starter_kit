@@ -1,21 +1,14 @@
-import React from 'react';
-import { func } from 'prop-types';
+import * as React from 'react';
 
 import { StyledContainerRow } from '../../styles/styledComponents/containers';
 
 import Button from '../shared/Button';
 
-const Controls = ({ filterBy }) => {
-  return (
-    <StyledContainerRow>
-      <Button action={() => filterBy('all')} label="Show all" />
-      <Button action={() => filterBy('user')} label="Filter posts for user 1" />
-    </StyledContainerRow>
-  );
-};
-
-Controls.propTypes = {
-  filterBy: func.isRequired,
-};
+const Controls = ({ filterBy }: { filterBy: (param: string) => mixed }) => (
+  <StyledContainerRow>
+    <Button action={() => filterBy('all')} label="Show all" />
+    <Button action={() => filterBy('user')} label="Filter posts for user 1" />
+  </StyledContainerRow>
+);
 
 export default Controls;

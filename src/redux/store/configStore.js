@@ -11,7 +11,7 @@ import rootEpic from './rootEpic';
 // Env
 const { PERSIST_ENABLED, PERSIST_PURGE, NODE_ENV } = process.env;
 
-export default function configureStore(history) {
+export default function configureStore(history: any) {
   // Common Middlewares
   const epicMiddleware = createEpicMiddleware(rootEpic);
   const middlewares = [epicMiddleware, routerMiddleware(history)];

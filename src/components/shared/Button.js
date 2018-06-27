@@ -1,5 +1,4 @@
-import React from 'react';
-import { string, func } from 'prop-types';
+import * as React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
@@ -14,7 +13,16 @@ const StyledButton = styled.div`
   cursor: pointer;
 `;
 
-const Button = ({ label, action, to, ...otherProps }) => {
+const Button = ({
+  label,
+  action,
+  to,
+  ...otherProps
+}: {
+  label: string,
+  action?: () => mixed,
+  to?: string,
+}) => {
   if (to !== '') {
     return (
       <Link {...otherProps} to={to} onClick={action}>
@@ -34,12 +42,6 @@ const Button = ({ label, action, to, ...otherProps }) => {
 Button.defaultProps = {
   action: () => {},
   to: '',
-};
-
-Button.propTypes = {
-  label: string.isRequired,
-  action: func,
-  to: string,
 };
 
 export default Button;

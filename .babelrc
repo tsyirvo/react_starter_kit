@@ -1,8 +1,11 @@
 {
-  "presets": ["react-app"],
+  "presets": ["react-app", "flow"],
   "env": {
     "production": {
       "plugins": ["transform-remove-console"]
+    },
+    "development": {
+      "plugins": [["flow-react-proptypes", { "ignoreNodeModules": true }]]
     }
   },
   "plugins": [
